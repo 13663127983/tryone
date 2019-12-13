@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+	<title>calculate </title>
+	<meta http-equiv = "Content-Type" content = "text/html;charaset = utf-8"/>
+	<link type="text/css" rel="stylesheet" href="css/style.css">
+	<script type="text/javascript" src="js/compute.js"></script>
+  </head>
+ <body>
+	<table>
+			<tr>
+				<td colspan="3" id="result">0</td>
+				<td><button type="button" value="C">C</button></td>
+			</tr>
+			<tr>
+				<td><button type="button" value="1">1</button></td>
+				<td><button type="button" value="2">2</button></td>
+				<td><button type="button" value="3">3</button></td>
+				<td><button type="button" value="+">+</button></td>
+			</tr>
+			<tr>
+				<td><button type="button" value="4">4</button></td>
+				<td><button type="button" value="5">5</button></td>
+				<td><button type="button" value="6">6</button></td>
+				<td><button type="button" value="-">-</button></td>
+			</tr>
+			<tr>
+				<td><button type="button" value="7">7</button></td>
+				<td><button type="button" value="8">8</button></td>
+				<td><button type="button" value="9">9</button></td>
+				<td><button type="button" value="*">*</button></td>
+			</tr>
+			<tr>
+				<td><button type="button" value="0">0</button></td>
+				<td><button type="button" value=".">.</button></td>				
+				<td><button type="button" value="=">=</button></td>
+				<td><button type="button" value="/">/</button></td>
+			</tr>	
+				
+		</table>	
+ </body>
+ <script>
+ 	/*1.获取到要操作的网页元素它的DOM对象
+ 	 2.给网页元素可以绑定事件
+ 	 3.触发事件时，执行事件的回调函数，完成具体的逻辑业务或者DOM操作
+ 	 */
+ 	var result=document.getElementById("result");
+ 	var btnList=document.getElementsByTagName("button");
+ 	var str="";
+ 	function calculate(){
+ 					result.innerHTML=eval(result.innerHTML);
+ 				}
+ 	function clearResult(){
+ 					result.innerHTML=0;
+ 				}
+ 	function showStr(val){
+ 		str=result.innerHTML;
+ 	    if(str==0)
+ 	    str=val;
+ 	    else
+ 	    str+=val;
+ 	    result.innerHTML=str;
+ 				}
+ 	for(var i=0;i<btnList.length;i++){
+ 		/*在DOM对象事件的回调函数中，this指向当前触发事件的DOM对象*/
+ 		btnList[i].onclick=function(){
+ 			var btnType=this.innerHTML;
+ 			switch(btnType){
+ 				case"=":
+ 				calculate();
+ 				break;
+ 				case "C":
+ 				clearResult();
+ 				break;
+ 				default:
+ 				showStr(btnType);
+ 				break;
+ 				
+ 				
+ 			}
+
+ 		}
+ 	}
+ 	
+ 	
+ 	
+ 	
+ </script>
+ <script>
+// 	var btnList=document.getElementsByTagName("button");
+// 	for(var i=0;i<btnList.length;i++)
+// 	{
+// 		btnList[i].onclick=function(){
+// 			 if(result.innerHTML==0)
+// 		{
+// 		result.innerHTML=this.innerHTML;
+// 		return;
+// 	    }
+// 		
+// 		result.innerHTML=result.innerHTML+this.innerHTML;
+// 	  if(this.innerHTML=="C")
+// 		{
+// 			result.innerHTML=0;
+// 		}
+// 		if(this.innerHTML=="=")
+// 		{
+// 			var cal=eval(result.innerHTML)
+// 		    result.innerHTML=cal;
+// 	         
+//
+// 		}
+// 		 
+// 		} 
+// 	}
+ 	    
+</script>
+ 
+</html>
